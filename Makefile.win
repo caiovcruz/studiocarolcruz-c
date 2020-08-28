@@ -1,0 +1,33 @@
+# Project: Studio Carol Cruz
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+RES      = Studio_Carol_Cruz_private.res
+OBJ      = "Studio\ Carol\ Cruz.o" $(RES)
+LINKOBJ  = "Studio Carol Cruz.o" $(RES)
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = "Studio Carol Cruz.exe"
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+"Studio\ Carol\ Cruz.o": Studio\ Carol\ Cruz.cpp
+	$(CPP) -c "Studio Carol Cruz.cpp" -o "Studio Carol Cruz.o" $(CXXFLAGS)
+
+Studio_Carol_Cruz_private.res: Studio_Carol_Cruz_private.rc Icon.rc
+	$(WINDRES) -i Studio_Carol_Cruz_private.rc --input-format=rc -o Studio_Carol_Cruz_private.res -O coff 
+
